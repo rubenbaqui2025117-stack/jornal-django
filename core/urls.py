@@ -23,5 +23,4 @@ urlpatterns = [
     path('', views.lista_artigos, name='lista_artigos'),
     path('artigo/<int:pk>/', views.detalhe_artigo, name='detalhe_artigo'),
     path('artigo/<int:pk>/comentarios/', views.comentarios_artigo, name='comentarios_artigo'),
-
 ]
