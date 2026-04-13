@@ -1,20 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 <head>
+    <meta charset="UTF-8">
     <title>Jornal de Notícias</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            
+            background-image: url('https://r2.erweima.ai/i/10355d.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.5); 
+            padding: 40px 20px;
+        }
+
+        .content-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 40px;
+        }
+
+        .noticia-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .noticia-card h2 {
+            margin-top: 0;
+            color: #1a1a1a;
+            font-size: 1.8em;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .noticia-card p {
+            color: #444;
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+
+        .data-pub {
+            display: inline-block;
+            margin-top: 15px;
+            color: #666;
+            font-weight: bold;
+            background: #f8f9fa;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 <body>
-    <h1>Jornal de Notícias</h1>
-    <hr>
-    {% for artigo in artigos %}
-        <div>
-            <h2>{{ artigo.titulo }}</h2>
-            <p>{{ artigo.corpo|truncatewords:30 }}</p>
-            <p><small>Publicado em: {{ artigo.data_publicacao }}</small></p>
+    <div class="overlay">
+        <div class="content-container">
+            <h1>Jornal de Notícias</h1>
+            
+            {% for artigo in artigos %}
+                <div class="noticia-card">
+                    <h2>{{ artigo.titulo }}</h2>
+                    <p>{{ artigo.corpo }}</p>
+                    <span class="data-pub">📅 Publicado em: {{ artigo.data_publicacao|date:"d/m/Y H:i" }}</span>
+                </div>
+            {% empty %}
+                <div style="background: white; padding: 20px; border-radius: 10px; text-align: center;">
+                    <p>Ainda não há notícias. Visita o Admin para criar uma!</p>
+                </div>
+            {% endfor %}
         </div>
-        <hr>
-    {% empty %}
-        <p>Ainda não há notícias publicadas. Vai ao /admin para criar uma!</p>
-    {% endfor %}
+    </div>
 </body>
 </html>
