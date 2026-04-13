@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jornal de Notícias</title>
+</head>
+<body>
+    <h1>Jornal de Notícias</h1>
+    <hr>
+    {% for artigo in artigos %}
+        <div>
+            <h2>{{ artigo.titulo }}</h2>
+            <p>{{ artigo.corpo|truncatewords:30 }}</p>
+            <p><small>Publicado em: {{ artigo.data_publicacao }}</small></p>
+        </div>
+        <hr>
+    {% empty %}
+        <p>Ainda não há notícias publicadas. Vai ao /admin para criar uma!</p>
+    {% endfor %}
+</body>
+</html>
