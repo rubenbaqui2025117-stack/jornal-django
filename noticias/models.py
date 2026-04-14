@@ -9,10 +9,10 @@ class Artigo(models.Model):
         return self.titulo
 
 class Comentario(models.Model):
-    # O ForeignKey liga o comentário a um artigo específico
-    artigo = models.ForeignKey(Artigo, on_delete=models.CASCADE, related_name='comentarios')
+    noticia = models.ForeignKey('Noticia', on_delete=models.CASCADE, related_name='comentarios')
+    autor = models.CharField(max_length=100)
     texto = models.TextField()
-    data = models.DateTimeField(auto_now_add=True)
+    data_criacao = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Comentário em {self.artigo.titulo}"
+        return f'Comentário de {self.autor} em {self.noticia}'
