@@ -96,7 +96,7 @@
             color: #333;
         }
 
-        /* Mensagem se estiver vazio */
+      
         .vazio {
             background: white;
             padding: 40px;
@@ -109,14 +109,14 @@
 
     <div class="wrapper">
         <header>
-            <h1>Jornal de Angola</h1>
+            <h1>Jornal de Notícias</h1>
             <p>A voz da nação em tempo real | Luanda, {% now "d \d\e F \d\e Y" %}</p>
         </header>
 
         <div class="container">
             {% for artigo in artigos %}
                 <article class="noticia-card">
-                    <span class="categoria">Destaque Nacional</span>
+                    <span class="categoria">Destaques </span>
                     <h2>{{ artigo.titulo }}</h2>
                     <p>{{ artigo.corpo }}</p>
                     
